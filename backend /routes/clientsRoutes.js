@@ -7,5 +7,9 @@ router
  .route("/:id")
  .get(controllers.getClient)
  .put(controllers.updateClient)
- .delete(controllers.deleteClient);
+ .delete(controllers.deleteClient); 
+ //create a new endpoint
+
+ router.route("/reservByClient/:id").get(controllers.createClient);
+
 module.exports = router;
