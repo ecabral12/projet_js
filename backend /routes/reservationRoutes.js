@@ -15,3 +15,4 @@ module.exports = reservController;
 
 
 // Avoir une bue globale qui permt de voir toute les reservations avec les nom et prenom des peronnes associées 
+//aprouver des reservation 

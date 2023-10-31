@@ -20,11 +20,13 @@ exports.getAllClients = (req, res, next) => {
       nom: req.body.nom,
       prenom: req.body.prenom,
       email: req.body.email,
-      téléphone: req.body.téléphone,
+      telephone: req.body.téléphone,
+      mdp: req.body.mdp
+
     };
   
     conn.query(
-      "INSERT INTO clients (nom, prenom, email, telephone) VALUES (?, ?, ?, ?)",
+      "INSERT INTO clients (nom, prenom, email, telephone, mdp) VALUES (?, ?, ?, ?, ?)",
       [clientData.nom, clientData.prenom, clientData.email, clientData.telephone],
       function (err, data, fields) {
         if (err) return next(new AppError(err, 500));
