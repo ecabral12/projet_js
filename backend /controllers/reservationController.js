@@ -19,13 +19,13 @@ exports.getAllReservations = (req, res, next) => {
     const reservationData = {
       clientId: req.body.client_id, // l'ID du client associé à la réservation
       tableId: req.body.table_id, // l'ID de la table réservée
-      dateReservation: req.body.date_reservation, // la date de la réservation
-      nombrePersonnes: req.body.nombre_personnes, // le nombre de personnes pour la réservation
+      nombrePersonnes: req.body.nombre_personnes,
+      dateReservation: req.body.date_reservation, // le nombre de personnes pour la réservation
     };
 
     conn.query(
-      "INSERT INTO reservations (client_id, table_id, date_reservation, nombre_personnes) VALUES (?, ?, ?, ?)",
-      [reservationData.clientId, reservationData.tableId, reservationData.dateReservation, reservationData.nombrePersonnes],
+      "INSERT INTO reservations (client_id, table_id, nombre_personnes,date_reserv) VALUES (?, ?, ?, ?)",
+      [reservationData.clientId, reservationData.tableId, reservationData.nombrePersonnes,reservationData.dateReservation],
       function (err, data, fields) {
         if (err) return next(new AppError(err, 500));
 

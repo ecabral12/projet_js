@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: 'Tilda';
+    src: url('./views/fonts/Tilda Script S Non-connect Demo.otf')
+  }
+
+  h1 {
+    font-size: 50px;
+    text-align: center;
+    margin-top: 170px;
+    color: white;
+    font-family: 'Tilda', sans-serif;
+  }
+

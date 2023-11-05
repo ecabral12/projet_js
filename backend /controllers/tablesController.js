@@ -52,6 +52,36 @@ exports.getAllTables = (req, res, next) => {
     );
   };
   
+  exports.getTablesDispo = (req, res, next) => {
+    const { capaciteMin, dateReservation, nombrePersonnes } = req.body;
+  
+    const sqlQuery = `
+      SELECT t.*
+      FROM tables t
+      WHERE t.capacite >= ? 
+      AND t.table_id NOT IN (
+        SELECT r.table_id
+        FROM reservations r
+        WHERE r.date_reserv = ?
+        AND r.nombre_personnes = ?
+        AND TIMESTAMPDIFF(SECOND, NOW(), r.date_reserv) >= 7200
+      );
+    `;
+  
+    conn.query(sqlQuery, [capaciteMin, dateReservation, nombrePersonnes], (err, data, fields) => {
+      if (err) {
+        return next(new AppError(err, 500));
+      }
+  
+      res.status(200).json({
+        status: "success",
+        length: data.length,
+        data: data,
+      });
+    });
+  };
+  
+  
 
 exports.updateTable = (req, res, next) => {
   if (!req.params.id) {
