@@ -78,11 +78,13 @@ exports.login = (req, res, next) => {
     }
 
     // Générez un jeton JWT pour l'authentification
-    const token = jwt.sign({ user: user }, 'votre_clé_secrète', {
+    const token = jwt.sign({ user: user }, 'elvis12', {
       expiresIn: '1h', // Vous pouvez ajuster la durée de validité du jeton
     });
+    const userArray = [user];
+
 
     // Répondez avec le jeton
-    res.status(200).json({ token });
+    res.status(200).json({ /*token*/ user: userArray });
   });
 };

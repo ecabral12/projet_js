@@ -27,7 +27,7 @@ exports.getAllClients = (req, res, next) => {
   
     conn.query(
       "INSERT INTO clients (nom, prenom, email, telephone, mdp) VALUES (?, ?, ?, ?, ?)",
-      [clientData.nom, clientData.prenom, clientData.email, clientData.telephone],
+      [clientData.nom, clientData.prenom, clientData.email, clientData.telephone, clientData.mdp],
       function (err, data, fields) {
         if (err) return next(new AppError(err, 500));
   

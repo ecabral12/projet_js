@@ -1,0 +1,104 @@
+<template>
+  <div class="container">
+    <div class="center">
+      <h1>Log in</h1>
+      <div class="register">
+        <input type="text" placeholder="xyz@mail.com" class="center-input" v-model="email" />
+        <input type="password" placeholder="Enter your password" class="center-input" v-model="password" />
+        <button class="center-button" v-on:click="login">Login</button>
+        <RouterLink to="/register">New here ? </RouterLink>
+
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts">
+  
+  import { RouterLink, RouterView } from 'vue-router'
+  import axios from 'axios'
+  import { onMounted, ref } from 'vue';
+  import router from '@/router';
+
+ 
+  const email = ref('') // to be assign to get our values such as document.getElement in js 
+  const password = ref('')
+
+   async function login(){ // functions to be assign to click events
+  
+        const requestBody = {
+            email: email.value,
+            mdp: password.value
+        }
+        try{
+            console.log(requestBody)
+            const request =  await axios.post("http://localhost:3000/api/auth/login", requestBody)
+          if(request.status == 200 ){
+            localStorage.setItem("user",JSON.stringify(request.data.user[0]))
+            router.push("/")
+            setTimeout(() => {
+              location.reload(); 
+            }, 100);
+          }                        
+        }catch(error){
+            console.error('Erreur lors de la requête API :', error);
+        }
+    }
+  onMounted(() => {
+    console.log('Le composant a été monté.');
+    let user = localStorage.getItem("user");
+    if(user){
+      router.push("/")
+    }
+});
+    
+</script>  
+
+
+<style>
+.container {
+  background-color: whitesmoke;
+  width: 400px;
+  height: 420px; 
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+  margin: auto;
+  border-radius: 10px;
+  margin-top: 100px;
+}
+h1{
+  margin-bottom: 15px;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 400;
+  
+}
+.center {
+  text-align: center; 
+}
+
+.center-input {
+  width: 300px;
+  height: 40px;
+  padding-left: 20px;
+  display: block;
+  margin: 0 auto; 
+  margin-bottom: 30px;
+  border: 2px solid skyblue;
+  border-radius: 6px;
+}
+
+.center-button {
+  width: 320px;
+  height: 40px;
+  border: 1px solid skyblue;
+  color: white;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto; 
+  background: skyblue;
+  border-radius: 7px;
+  margin-bottom: 30px;
+}
+</style>

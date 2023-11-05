@@ -1,9 +1,13 @@
 const express = require("express");
 const controllers = require("../controllers/authController");
 const authController = express.Router();
+const clientController = require("../controllers/clientsController");
 
-authController.route("/").post(controllers.login);
 
+authController.route("/login").post(controllers.login);
+authController.route("/register").post(clientController.createClient)
+
+// router.route("/reservByClient/:id").get(controllers.createClient);
 
  
 module.exports = authController;
