@@ -1,6 +1,7 @@
 <template>
 <div class="container">
 		<div class="contact-box">
+			
 			<div class="left"></div>
 			<div class="right">
 				<h2>Book a table</h2>
@@ -29,7 +30,7 @@
 
     const numberPlp = ref(1)
     const tableId = 1
-    const selectedDateTime = ref(new Date()); // Utilisez une variable de type Date pour stocker la sélection
+    const selectedDateTime = ref(new Date()); 
     watch(selectedDateTime, (newValue, oldValue) => {
         console.log('Nouvelle valeur de selectedDateTime:', newValue);
     });
@@ -46,6 +47,7 @@
               const userData = JSON.parse(userJSON)
               console.log(userData.nom)
               userId = userData.client_id
+			  console.log("Test elvis")
             }
 	
 	async function getAvailableTables(){
