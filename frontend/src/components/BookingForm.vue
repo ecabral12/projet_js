@@ -198,8 +198,8 @@ textarea{
 .btn{
 	width: 100%;
 	padding: 0.5rem 1rem;
-	background-color: white;
-	color: red;
+	background-color: #D32F2F;
+	color: white;
 	font-size: 1.1rem;
 	border: none;
 	outline: none;

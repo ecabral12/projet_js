@@ -67,7 +67,7 @@ exports.getAllClients = (req, res, next) => {
       nom: req.body.nom,
       prenom: req.body.prenom,
       email: req.body.email,
-      téléphone: req.body.téléphone,
+      telephone: req.body.telephone,
     };
   
     conn.query(

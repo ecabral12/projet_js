@@ -1,12 +1,14 @@
 <template>
-  <div class="container">
+ <div class="container" :style="{ height: dynamicHeight }">
+    <h1>Log in</h1>
     <div class="center">
-      <h1>Log in</h1>
+     
+
       <div class="register">
         <input type="text" placeholder="xyz@mail.com" class="center-input" v-model="email" />
         <input type="password" placeholder="Enter your password" class="center-input" v-model="password" />
         <button class="center-button" v-on:click="login">Login</button>
-        <RouterLink to="/register">New here ? </RouterLink>
+        <RouterLink to="/register" class="register-link">New here?</RouterLink>
 
       </div>
     </div>
@@ -23,6 +25,12 @@
  
   const email = ref('') // to be assign to get our values such as document.getElement in js 
   const password = ref('')
+  const dynamicHeight = ref('400');
+
+  function adjustContainerHeight() {
+  dynamicHeight.value = '400';
+}
+
 
    async function login(){ // functions to be assign to click events
   
@@ -45,6 +53,7 @@
         }
     }
   onMounted(() => {
+    adjustContainerHeight()
     console.log('Le composant a été monté.');
     let user = localStorage.getItem("user");
     if(user){
@@ -57,22 +66,24 @@
 
 <style>
 .container {
-  background-color: whitesmoke;
+  background-color: #252525;
   width: 400px;
-  height: 420px; 
-  display: flex;
+  height: auto; 
+  display: block;
   align-items: center; 
   justify-content: center; 
   margin: auto;
   border-radius: 10px;
   margin-top: 100px;
+  
 }
 h1{
-  margin-bottom: 15px;
+  margin-bottom: 70px;
   text-align: center;
   font-size: 30px;
   font-weight: 400;
-  
+  position: relative;
+  top: 30px;
 }
 .center {
   text-align: center; 
@@ -82,23 +93,31 @@ h1{
   width: 300px;
   height: 40px;
   padding-left: 20px;
-  display: block;
+  display: flex;
   margin: 0 auto; 
-  margin-bottom: 30px;
-  border: 2px solid skyblue;
+  margin-bottom: 40px;
+  border: 2px solid white;
   border-radius: 6px;
 }
 
 .center-button {
   width: 320px;
   height: 40px;
-  border: 1px solid skyblue;
+  border: 2px solid #d62323;
   color: white;
   cursor: pointer;
   display: block;
   margin: 0 auto; 
-  background: skyblue;
+  background: #D32F2F;
   border-radius: 7px;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
 }
+
+.register-link {
+  color: white; /* Couleur du texte blanc pour le lien */
+  text-decoration: underline; /* Souligner le lien (peut être ajusté selon vos préférences) */
+  cursor: pointer;
+}
+
+
 </style>
