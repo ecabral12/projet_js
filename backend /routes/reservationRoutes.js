@@ -9,6 +9,11 @@ reservController
  .put(controllers.updateReservation)
  .delete(controllers.deleteReservation);
 
+ reservController.route("/reservClient/:id").get(controllers.getReservationsByClient)
+ reservController.route("/reservPastClient/:id").get(controllers.getPastReservationsByClient)
+ reservController.route("/reservUpcomingClient/:id").get(controllers.getUpComingReservationsByClient)
+
+
 
  
 module.exports = reservController;

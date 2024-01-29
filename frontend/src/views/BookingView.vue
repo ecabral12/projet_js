@@ -1,5 +1,5 @@
 <template>
-    <BookingForm/>
+    <BookingForm :mode="'reservation'"/>
 </template>
 
 

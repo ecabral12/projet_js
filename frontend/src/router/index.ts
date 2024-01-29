@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import HomeViewTest from '../views/HomeViewTest.vue'
+import UpdateBookingView from '../views/UpdateBookingView.vue';
+
 
 
 const router = createRouter({
@@ -25,7 +27,13 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('../views/LoginView.vue')
+      component: () => import('../views/LoginView.vue'),
+      beforeEnter: function () {
+        let user = localStorage.getItem("user");
+        if (user) {
+          router.push("/")
+        }
+      }
     },
     {
       path: '/register',
@@ -33,7 +41,13 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('../views/RegisterView.vue')
+      component: () => import('../views/RegisterView.vue'),
+      beforeEnter: function () {
+        let user = localStorage.getItem("user");
+        if (user) {
+          router.push("/")
+        }
+      }
     },
     {
       path: '/booking',
@@ -50,7 +64,13 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/MyAccount.vue')
-    }
+    },
+    {
+      path: '/updateBooking/:reservationId', //TODO remove id in the url
+      name: 'update',
+      component: UpdateBookingView,
+      props: (route) => ({ reservationId: route.params.reservationId })
+    },
   ]
 })
 

@@ -17,15 +17,12 @@ import { onMounted, ref } from 'vue';
             router.push("/login")
         }
     }
-    const myValue ="2023-11-05 14:31"
-    const selectedDateTime = ref(new Date()); // Utilisez une variable de type Date pour stocker la sélection
-
 </script>
 
 
 <template>
-    <h1>Welcome to </h1>
-    <h2>THE CASTLE</h2>
+    <h1 class="welcomeTitle">Welcome to </h1>
+    <h2 class="titleHome">THE CASTLE</h2>
     <button v-on:click="bookTable()">Book a table </button>
 </template>
 
@@ -48,12 +45,20 @@ import { onMounted, ref } from 'vue';
         background-size: cover;
     }
 
-    h2{
+    .titleHome{
         font-size: 60px;
         text-align: center;
         
         color: white;
         font-family: "AribauGrotesk-Regular";
+    }
+
+    .welcomeTitle{
+        font-size: 50px;
+        text-align: center;
+        margin-top: 170px;
+        color: white;
+        font-family: 'Tilda', sans-serif;
     }
 
     button{

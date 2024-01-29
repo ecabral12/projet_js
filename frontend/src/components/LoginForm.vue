@@ -7,9 +7,11 @@
       <div class="register">
         <input type="text" placeholder="xyz@mail.com" class="center-input" v-model="email" />
         <input type="password" placeholder="Enter your password" class="center-input" v-model="password" />
-        <button class="center-button" v-on:click="login">Login</button>
+        <button class="center-button" v-on:click="login">
+          <span v-if="isLoading">Loading...</span>
+          <span v-else>Login</span>
+        </button>        
         <RouterLink to="/register" class="register-link">New here?</RouterLink>
-
       </div>
     </div>
   </div>
@@ -21,6 +23,12 @@
   import axios from 'axios'
   import { onMounted, ref } from 'vue';
   import router from '@/router';
+  import {useToast} from 'vue-toast-notification';
+	import 'vue-toast-notification/dist/theme-sugar.css';
+
+  const $toast = useToast();
+  const isLoading = ref(false);
+
 
  
   const email = ref('') // to be assign to get our values such as document.getElement in js 
@@ -33,6 +41,8 @@
 
 
    async function login(){ // functions to be assign to click events
+
+    isLoading.value = true;
   
         const requestBody = {
             email: email.value,
@@ -47,18 +57,18 @@
             setTimeout(() => {
               location.reload(); 
             }, 100);
-          }                        
+          }                  
         }catch(error){
             console.error('Erreur lors de la requête API :', error);
+            $toast.error("Wrong email or password.")
+            isLoading.value = false
+
         }
     }
   onMounted(() => {
     adjustContainerHeight()
     console.log('Le composant a été monté.');
-    let user = localStorage.getItem("user");
-    if(user){
-      router.push("/")
-    }
+    
 });
     
 </script>  

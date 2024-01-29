@@ -1,13 +1,13 @@
 <template>
-  <div class="container">
+  <div class="container-form">
     <div class="header">
       <h1 :class="{ 'center-text': isEditing }">Account Details</h1>
       <button type="submit" class="edit-button" @click="toggleEditing" :class="{ 'invisible': isEditing }">
         <img width="32" height="32" src="https://img.icons8.com/retro/32/edit.png" alt="edit"/>
       </button>
     </div>
-    <div class="left">
-      <div class="register">
+    <div class="left-form">
+      <div class="register-form">
         <div class="input-group">
           <label for="fullName">Full Name:</label>
           <input type="text" placeholder="Full name" class="center-input" v-model="fullName" :disabled="!isEditing" />
@@ -59,9 +59,7 @@
       axios.get(`http://localhost:3000/api/client/${client_id}`)
         .then(response => {
           console.log("elvis",response.data.data[0])
-          const data = response.data.data[0]; // Supposons que la réponse est un objet JSON
-
-          // Remplir les variables avec les valeurs de la réponse
+          const data = response.data.data[0];        
           fullName.value = data.nom;
           name.value = data.prenom;
           email.value = data.email;
@@ -96,6 +94,7 @@
           //TODO USE TOAST
   
           isEditing.value = false
+          //after a timeOut  location.reload()
         }
                         
     }catch(e){
@@ -113,7 +112,7 @@
 
 
 <style>
-.container {
+.container-form {
   background-color: #252525;
   width: 400px;
   height: auto;
@@ -137,7 +136,7 @@
   width: 30px;
   height: 30px;
 }
-h1 {
+.header h1 {
   margin-bottom: 20px;
   text-align: center;
   font-size: 30px;

@@ -17,15 +17,15 @@ exports.getAllReservations = (req, res, next) => {
     if (!req.body) return next(new AppError("No form data found", 400));
 
     const reservationData = {
-      clientId: req.body.client_id, // l'ID du client associé à la réservation
-      tableId: req.body.table_id, // l'ID de la table réservée
+      clientId: req.body.client_id, 
+      tableId: req.body.table_id, 
       nombrePersonnes: req.body.nombre_personnes,
-      dateReservation: req.body.date_reservation, // le nombre de personnes pour la réservation
+      date_reserv: req.body.date_reserv,
     };
 
     conn.query(
       "INSERT INTO reservations (client_id, table_id, nombre_personnes,date_reserv) VALUES (?, ?, ?, ?)",
-      [reservationData.clientId, reservationData.tableId, reservationData.nombrePersonnes,reservationData.dateReservation],
+      [reservationData.clientId, reservationData.tableId, reservationData.nombrePersonnes,reservationData.date_reserv],
       function (err, data, fields) {
         if (err) return next(new AppError(err, 500));
 
@@ -62,10 +62,10 @@ exports.getAllReservations = (req, res, next) => {
   
     const reservationId = req.params.id;
     const updatedReservationData = {
-      clientId: req.body.client_id,
-      tableId: req.body.table_id,
-      dateReservation: req.body.date_reservation,
-      nombrePersonnes: req.body.nombre_personnes,
+      client_id: req.body.client_id,
+      table_id: req.body.table_id,
+      date_reserv: req.body.date_reserv,
+      nombre_personnes: req.body.nombre_personnes,
     };
   
     conn.query(
@@ -112,6 +112,51 @@ exports.getAllReservations = (req, res, next) => {
   
     conn.query(
       "SELECT * FROM reservations WHERE client_id = ?",
+      [clientId],
+      function (err, data, fields) {
+        if (err) return next(new AppError(err, 500));
+  
+        res.status(200).json({
+          status: "success",
+          length: data?.length,
+          data: data,
+        });
+      }
+    );
+  };
+
+
+  exports.getUpComingReservationsByClient = (req, res, next) => {
+    if (!req.params.id) {
+      return next(new AppError("No client ID found", 404));
+    }
+  
+    const clientId = req.params.id;
+  
+    conn.query(
+      "SELECT * FROM reservations WHERE client_id = ? AND date_reserv > sysdate()",
+      [clientId],
+      function (err, data, fields) {
+        if (err) return next(new AppError(err, 500));
+  
+        res.status(200).json({
+          status: "success",
+          length: data?.length,
+          data: data,
+        });
+      }
+    );
+  };
+
+  exports.getPastReservationsByClient = (req, res, next) => {
+    if (!req.params.id) {
+      return next(new AppError("No client ID found", 404));
+    }
+  
+    const clientId = req.params.id;
+  
+    conn.query(
+      "SELECT * FROM reservations WHERE client_id = ? AND date_reserv < sysdate()",
       [clientId],
       function (err, data, fields) {
         if (err) return next(new AppError(err, 500));

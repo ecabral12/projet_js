@@ -68,13 +68,13 @@ exports.login = (req, res, next) => {
     }
 
     if (results.length === 0) {
-      return res.status(401).json({ message: 'E-mail ou mot de passe incorrect.' });
+      return res.status(401).json({ message: 'Wrong email or password.' });
     }
 
     const user = results[0];
     // Vérifiez le mot de passe
     if (password != user.mdp) {
-      return res.status(401).json({ message: 'E-mail ou mot de passe incorrect.' });
+      return res.status(401).json({ message: 'Wrong email or password.' });
     }
 
     // Générez un jeton JWT pour l'authentification
