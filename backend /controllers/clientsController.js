@@ -20,7 +20,7 @@ exports.getAllClients = (req, res, next) => {
       nom: req.body.nom,
       prenom: req.body.prenom,
       email: req.body.email,
-      telephone: req.body.téléphone,
+      telephone: req.body.telephone,
       mdp: req.body.mdp
 
     };

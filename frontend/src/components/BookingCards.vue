@@ -29,11 +29,13 @@
     import { RouterLink, RouterView } from 'vue-router'
     import axios from 'axios'
     import router from '@/router';
+    import {useToast} from 'vue-toast-notification';
     import BookingForm from '../components/BookingForm.vue'
     const props = defineProps(['date', 'time', 'numberOfPlp','showButtons','reservationId']);
     const emits = defineEmits();
     const showBookingForm = ref(false)
-
+    const toast = useToast()
+    
     function handleButtonClick() {
         emits('buttonClick', props.reservationId);
         console.log("i clicked in",props.reservationId)
@@ -44,7 +46,8 @@
    async function handleDeleteButton(){
         const request = await axios.delete(`http://localhost:3000/api/reservation/${props.reservationId}`)
         if(request.status == 200){
-            console.log("The reservation was cancelled")
+            toast.success("You reservation has been deleted please update your page")
+            location.reload(); 
             // TODO: Toast here and maybe a reload of the page
         }
         console.log("i clicked delete button",props.reservationId)
