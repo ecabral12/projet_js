@@ -11,6 +11,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "axios": "^1.7.2",
     "esbuild": "^0.21.5",
     "vue": "^3.3.4",
     "vue-ctk-date-time-picker": "^3.0.0-alpha.0",
