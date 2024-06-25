@@ -15,8 +15,8 @@ Pour ce projet, nous avons sélectionné un projet JavaScript existant comme bas
 ### 2.1 Dockerfile
 Nous avons créé deux Dockerfiles, un pour le frontend et un pour le backend.
 
-- **Frontend :** [Dockerfile](app/frontend/Dockerfile)
-- **Backend :** [Dockerfile](app/backend/Dockerfile)
+- **Frontend :** [Dockerfile](/frontend/Dockerfile)
+- **Backend :** [Dockerfile](/backend/Dockerfile)
 
 ### 2.2 docker-compose.yml
 Le fichier [docker-compose.yml](app/docker-compose.yml) à la racine du projet permet d'orchestrer les services Docker.
