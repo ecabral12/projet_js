@@ -19,7 +19,7 @@ Nous avons créé deux Dockerfiles, un pour le frontend et un pour le backend.
 - **Backend :** [Dockerfile](/backend/Dockerfile)
 
 ### 2.2 docker-compose.yml
-Le fichier [docker-compose.yml](app/docker-compose.yml) à la racine du projet permet d'orchestrer les services Docker.
+Le fichier [docker-compose.yml](/docker-compose.yml) à la racine du projet permet d'orchestrer les services Docker.
 
 Pour démarrer les services, utilisez la commande suivante :
 ```sh
