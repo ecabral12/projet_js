@@ -3,28 +3,23 @@
 
 ## Étape 1 : Préparation du projet
 ### 1.1 Choix du projet
-Pour le projet existant à utiliser, nous avons choisi un projet web. 
-Un **front-end** développé en [React.js](https://fr.react.dev/) et un back-end API en [Nest.js](https://nestjs.com/), [Prisma ORM](https://www.prisma.io/) et [GraphQL](https://graphql.org/).  
-Le site web est une reproduction du blog [Medium.com](https://medium.com/).
+Pour le projet existant à utiliser, nous avons choisi un projet vu JS. 
 
-La page d'accueil :
 
-![Image](images/image_home_client.png)
 
-Lien du dépôt : [ICI](https://github.com/EFREI-M1-Dev/GraphQL-Eval-FLMP)
-
+Lien du dépôt : [ICI]https://github.com/ecabral12/projet_js.git
 <hr>
 
 ## Étape 2 : Docker
 ### 2.1 Dockerfile
-Les trois Dockerfile sont dans le dossier `app/<nom>` (`<nom>` = client, nginx ou server).
-
+2 dcoker fiel un dasn  frontend et un dans backend
 ### 2.2 docker-compose.yml
-Le fichier [docker-compose.yml](app/docker-compose.yml) est dans le dossier `app`.
+Le fichier [docker-compose.yml](app/docker-compose.yml) est a la racine du projet .
 
 Commande d'exécution : 
 ```sh
-docker compose -f "app/docker-compose.yml" up -d --build
+docker pull node
+sudo docker-compose up --build
 ```
 
 Résultat après avoir exécuté la commande :
@@ -43,7 +38,7 @@ Résultat sur `localhost:5173` :
 
 Vous avez juste besoin de lancer le script :
 ```sh
-sh swarm/launch.sh
+doc
 ```
 
 Ou faites ceci manuellement en suivant le README.md dans le dossier swarm.
