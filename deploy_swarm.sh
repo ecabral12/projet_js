@@ -56,8 +56,8 @@ multipass exec master -- git clone https://github.com/ecabral12/projet_js.git
 multipass exec master -- sudo docker service create --name registry -p 5000:5000 registry
 
 
-multipass exec master -- bash -c "cd AWS-Project-FLMP/app/server && sudo docker image build -t 127.0.0.1:5000/server_image:latest -f Dockerfile ."
-multipass exec master -- bash -c "cd AWS-Project-FLMP/app/client && sudo docker image build -t 127.0.0.1:5000/client_image:latest -f Dockerfile ."
+multipass exec master -- bash -c "cd projet_js/backend && sudo docker image build -t 127.0.0.1:5000/backend_image:latest -f Dockerfile ."
+multipass exec master -- bash -c "cd projet_js/frontend && sudo docker image build -t 127.0.0.1:5000/frontend_image:latest -f Dockerfile ."
 multipass exec master -- sudo docker image push 127.0.0.1:5000/backend_image:latest
 multipass exec master -- sudo docker image push 127.0.0.1:5000/frontend_image:latest
 
