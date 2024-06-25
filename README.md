@@ -23,6 +23,7 @@ Le fichier [docker-compose.yml](/docker-compose.yml) à la racine du projet perm
 
 Pour démarrer les services, utilisez la commande suivante :
 ```sh
+docker pull node  
 docker-compose up --build
 ```
 
