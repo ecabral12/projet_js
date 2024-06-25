@@ -45,7 +45,7 @@ Une fois lancé, l'application est accessible à l'adresse `http://localhost:517
 
 Pour déployer avec Docker Swarm, utilisez le script fourni :
 ```sh
-./deploy_swarm.sh
+swarm/deploy_swarm.sh
 ```
 
 Vous pouvez également suivre les instructions détaillées dans le README.md du dossier `swarm` pour un déploiement manuel.
