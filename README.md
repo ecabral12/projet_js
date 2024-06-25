@@ -30,11 +30,13 @@ Une fois lancé, l'application est accessible à l'adresse `http://localhost:517
 
 **Capture d'écran de l'application en cours d'exécution :**
 
-![Image docker command](images/image_docker_app_running.png)
+![image](https://github.com/ecabral12/projet_js/assets/160595084/a6b155b4-bf71-4184-8979-e53be5a6c67a)
+
 
 **Résultat de l'application sur `localhost:5173` :**
 
-![Image résultat](images/image_docker_app_result.png)
+![image](https://github.com/ecabral12/projet_js/assets/160595084/dd1e44e4-0329-4b1a-b7a1-4ca0f26eaecf)
+
 
 ---
 
