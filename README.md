@@ -76,9 +76,7 @@ docker run --rm -w /workspace terraform apply -auto-approve
 
 Après une exécution réussie, une nouvelle instance EC2 sera créée sur AWS.
 
-**Capture d'écran de Terraform en action sur AWS :**
 
-![Image terraform AWS](images/image_terraform_aws.png)
 
 ### 4.3 Ansible
 
