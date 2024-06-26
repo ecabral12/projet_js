@@ -1,4 +1,4 @@
-Voici une version améliorée du rapport de projet, en tenant compte des corrections et des ajustements nécessaires :
+Voici une version améliorée du rapport de projet, en tenant compte des corrections /Users/djahnickefrei/Efrei/projet_js/README.mdet des ajustements nécessaires :
 
 ---
 
@@ -46,7 +46,7 @@ Une fois lancé, l'application est accessible à l'adresse `http://localhost:517
 
 Pour déployer avec Docker Swarm, utilisez le script fourni :
 ```sh
-./deploy_swarm.sh
+sh deploy_swarm.sh
 ```
 
 Vous pouvez également suivre les instructions détaillées dans le README.md du dossier `swarm` pour un déploiement manuel.
